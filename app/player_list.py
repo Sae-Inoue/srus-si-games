@@ -4,6 +4,7 @@ from player import Player
 class PlayerList():
     def __init__(self) -> None:
         self._head = None
+        self._tail = None
 
     # Create a method that allows you to insert a new node at the head of the list.
     def is_empty(self):
@@ -15,11 +16,13 @@ class PlayerList():
 
         if self.is_empty():
             self._head = new_node
+            self._tail = new_node
 
         else:
             new_node.next = self._head
             self._head.previous = new_node
             self._head = new_node
+
 
 
     def __str__(self)->str:
@@ -38,9 +41,18 @@ class PlayerList():
 #     player3 = Player("3", "Josh")
 #     plnode = PlayerNode(player)
 #     pl1 = PlayerList()
+#     print(f'this is  {pl1._tail}')
+#     print(f'this is  {pl1._head}')
 #     pl1.insert_head(player)
+#     print(f'This is tail {pl1._tail.player}')
+#     print(f'this is head {pl1._head.player}')
 #     pl1.insert_head(player2)
+#     print(f'This is tail {pl1._tail.player}')
+#     print(f'this is head {pl1._head.player}')
 #     pl1.insert_head(player3)
+#     print(f'This is tail {pl1._tail.player}')
+#     print(f'this is head {pl1._head.player}')
+#
 #
 #
 #     print(str(player))

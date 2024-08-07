@@ -10,37 +10,43 @@ class PlayerList():
         return self._head is None
 
     def insert_head(self, player: Player):
+        #creating a new node
         new_node = PlayerNode(player)
 
         if self.is_empty():
             self._head = new_node
-            print("This is empty")
+
         else:
             new_node.next = self._head
-            new_node.previous = new_node
+            self._head.previous = new_node
             self._head = new_node
-            print("this is not empty")
 
-    def __str__(self):
+
+    def __str__(self)->str:
         node = []
         current = self._head
-        node.append(str(current))
+        while current is not None:
+            node.append(str(current.player.name))
+            current = current.next
+        return f"Player List: {', '.join(node)}"
 
 
-def main():
-    player = Player("1", "Sae")
-    #player2 = Player("2", "John")
-    plnode = PlayerNode(player)
-    pl1 = PlayerList()
-    list = pl1.insert_head(player)
-    #list = list.insert_head(player2)
 
-    print(str(player))
-    print(str(plnode))
-    print(list)
-    #print(list2)
-
-
-if __name__ == '__main__':
-    main()
+# def main():
+#     player = Player("1", "Sae")
+#     player2 = Player("2", "John")
+#     player3 = Player("3", "Josh")
+#     plnode = PlayerNode(player)
+#     pl1 = PlayerList()
+#     pl1.insert_head(player)
+#     pl1.insert_head(player2)
+#     pl1.insert_head(player3)
+#
+#
+#     print(str(player))
+#     print(str(plnode))
+#     print(pl1)
+#
+# if __name__ == '__main__':
+#     main()
 

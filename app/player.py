@@ -12,5 +12,5 @@ class Player:
         return self.__name
 
     def __str__(self):
-        return f"Player id:{self.__uid} , Player name:{self.__name}"
+        return f"id:{self.__uid} ,name:{self.__name}"
 

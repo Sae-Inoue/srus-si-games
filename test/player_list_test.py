@@ -16,10 +16,12 @@ class TestPlayer(unittest.TestCase):
     def test_insert_head(self):
         self.playerlist.insert_head(self.player)
         self.playerlist.insert_head(self.player2)
-        self.assertEqual(self.playerlist, )
+        self.assertEqual(self.playerlist._head.player, self.player2)
 
     def test_str(self):
-        self.assertEqual(str(self.playerlist.__str__()), "Player id:1 , Player name:Sae")
+        self.playerlist.insert_head(self.player)
+        self.playerlist.insert_head(self.player2)
+        self.assertEqual(str(self.playerlist), "Player List: John, Sae")
 
 if __name__ == '__main__':
     unittest.main()

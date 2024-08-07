@@ -34,6 +34,15 @@ class PlayerNode():
         return self._player.uid
 
     def __str__(self) -> str:
-        return f"PlayerNode(Player:{self._player}, Previous={self._previous}, Next={self._next})"
+        return f"PlayerNode({self._player}, Previous={self._previous}, Next={self._next})"
 
 
+# def main():
+#     player = Player("1", "Sae")
+#     plnode = PlayerNode(player)
+#     print(str(player))
+#     print(str(plnode))
+#
+#
+# if __name__ == "__main__":
+#     main()

@@ -73,6 +73,20 @@ class PlayerList():
 
             current = current.next
 
+    def display(self, forward=True):
+        current = self._head
+        nodes = []
+
+        while current is not None:
+            nodes.append(current.player.name)
+            current = current.next
+
+        if forward == False:
+            nodes.reverse()
+
+        print(nodes)
+
+
 
     def __str__(self)->str:
         node = []
@@ -83,31 +97,33 @@ class PlayerList():
         return f"Player List: {', '.join(node)}"
 
 
-#
-# def main():
-#     player = Player("1", "Sae")
-#     player2 = Player("2", "John")
-#     player3 = Player("3", "Josh")
-#     plnode = PlayerNode(player)
-#     pl1 = PlayerList()
-#     print(f'this is  {pl1._tail}')
-#     print(f'this is  {pl1._head}')
-#     pl1.insert_tail(player)
-#     print(f'This is tail {pl1._tail.player}')
-#     print(f'this is head {pl1._head.player}')
-#     pl1.insert_tail(player2)
-#     print(f'This is tail {pl1._tail.player}')
-#     print(f'this is head {pl1._head.player}')
-#     pl1.insert_tail(player3)
-#     print(f'This is tail {pl1._tail.player}')
-#     print(f'this is head {pl1._head.player}')
-#
-#     print(str(player))
-#     print(str(plnode))
-#     print(pl1)
-#     pl1.delete_item_by_key("3")
-#     print(pl1)
-#
-# if __name__ == '__main__':
-#     main()
+
+def main():
+    player = Player("1", "Sae")
+    player2 = Player("2", "John")
+    player3 = Player("3", "Josh")
+    plnode = PlayerNode(player)
+    pl1 = PlayerList()
+    print(f'this is  {pl1._tail}')
+    print(f'this is  {pl1._head}')
+    pl1.insert_tail(player)
+    print(f'This is tail {pl1._tail.player}')
+    print(f'this is head {pl1._head.player}')
+    pl1.insert_tail(player2)
+    print(f'This is tail {pl1._tail.player}')
+    print(f'this is head {pl1._head.player}')
+    pl1.insert_tail(player3)
+    print(f'This is tail {pl1._tail.player}')
+    print(f'this is head {pl1._head.player}')
+    #
+    # print(str(player))
+    # print(str(plnode))
+    # print(pl1)
+    # pl1.delete_item_by_key("3")
+    # print(pl1)
+
+    pl1.display(False)
+
+if __name__ == '__main__':
+    main()
 

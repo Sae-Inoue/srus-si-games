@@ -23,5 +23,10 @@ class TestPlayer(unittest.TestCase):
         self.playerlist.insert_head(self.player2)
         self.assertEqual(str(self.playerlist), "Player List: John, Sae")
 
+    def test_insert_tail(self):
+        self.playerlist.insert_tail(self.player)
+        self.playerlist.insert_tail(self.player2)
+        self.assertEqual(self.playerlist._tail.player, self.player2)
+
 if __name__ == '__main__':
     unittest.main()

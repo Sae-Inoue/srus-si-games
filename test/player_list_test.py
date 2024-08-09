@@ -9,6 +9,7 @@ class TestPlayer(unittest.TestCase):
         self.playerlist = PlayerList()
         self.player = Player(uid="1", name="Sae")
         self.player2 = Player(uid="2", name="John")
+        self.player3 = Player(uid="3", name="Karen")
 
     def test_is_empty(self):
         self.assertTrue(self.playerlist.is_empty)
@@ -34,6 +35,13 @@ class TestPlayer(unittest.TestCase):
         self.playerlist.insert_tail(self.player2)
         self.playerlist.delete_tail()
         self.assertEqual(self.playerlist._tail.player, self.player)
+
+    def test_delete_item_by_key(self):
+        self.playerlist.insert_tail(self.player)
+        self.playerlist.insert_tail(self.player2)
+        self.playerlist.insert_tail(self.player3)
+        self.playerlist.delete_item_by_key("2")
+        self.assertEqual(str(self.playerlist), "Player List: Sae, Karen")
 
     def test_str(self):
         self.playerlist.insert_head(self.player)

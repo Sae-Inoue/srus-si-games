@@ -54,6 +54,24 @@ class PlayerList():
             self._tail = self._tail.previous
             self._tail.next = None
 
+    def delete_item_by_key(self, id: str):
+        current = self._head
+
+        while current is not None:
+            if current.player.uid == id:
+                if current == self._head:
+                    self.delete_head()
+                    return
+
+                elif current == self._tail:
+                    self.delete_tail()
+                    return
+
+                else:
+                    current.previous.next = current.next
+                    current.next.previous = current.previous
+
+            current = current.next
 
 
     def __str__(self)->str:
@@ -84,10 +102,10 @@ class PlayerList():
 #     print(f'This is tail {pl1._tail.player}')
 #     print(f'this is head {pl1._head.player}')
 #
-#
-#
 #     print(str(player))
 #     print(str(plnode))
+#     print(pl1)
+#     pl1.delete_item_by_key("3")
 #     print(pl1)
 #
 # if __name__ == '__main__':

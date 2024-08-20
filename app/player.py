@@ -1,3 +1,6 @@
+from argon2 import PasswordHasher
+
+
 class Player:
     def __init__(self, uid: str, name: str) -> None:
         '''
@@ -26,4 +29,8 @@ class Player:
         :return: String representation of the player
         '''
         return f"id:{self.__uid} ,name:{self.__name}"
+
+
+    def add_password(self, password:str):
+
 

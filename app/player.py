@@ -1,6 +1,5 @@
 from argon2 import PasswordHasher
 
-
 class Player:
     def __init__(self, uid: str, name: str) -> None:
         '''
@@ -9,6 +8,7 @@ class Player:
         '''
         self.__uid = uid
         self.__name = name
+        self.__hashed_password = None
 
     @property
     def uid(self) -> str:
@@ -32,5 +32,11 @@ class Player:
 
 
     def add_password(self, password:str):
+        '''
+        Hashed password of the player and store it in a private instance variable
+        :param password: Plaintext password to be hashed
+        '''
+        ph = PasswordHasher()
+        self.__hashed_password = ph.hash(password)
 
 

@@ -1,4 +1,5 @@
 from argon2 import PasswordHasher
+from argon2.exceptions import VerifyMismatchError
 
 class Player:
     def __init__(self, uid: str, name: str) -> None:
@@ -42,13 +43,14 @@ class Player:
     def verify_password(self, password:str):
         '''
         Checks if the provided password matches the hashed password
-        :param password:
-        :return:
+        :param password: Plaintext password to be hashed
+        :return: True if the provided password matches the hashed, otherwise False
         '''
         ph = PasswordHasher()
-        if(ph.verify(self.__hashed_password, password)):
-            return True
-        return False
+        try:
+            return ph.verify(self.__hashed_password, password)
+        except VerifyMismatchError:
+            return False
 
 
 

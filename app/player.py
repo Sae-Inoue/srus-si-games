@@ -39,4 +39,17 @@ class Player:
         ph = PasswordHasher()
         self.__hashed_password = ph.hash(password)
 
+    def verify_password(self, password:str):
+        '''
+        Checks if the provided password matches the hashed password
+        :param password:
+        :return:
+        '''
+        ph = PasswordHasher()
+        if(ph.verify(self.__hashed_password, password)):
+            return True
+        return False
+
+
+
 

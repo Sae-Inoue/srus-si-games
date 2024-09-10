@@ -9,7 +9,7 @@ class Player:
         '''
         self._uid = uid
         self._name = name
-        self.__hashed_password = None
+        self._hashed_password = None
 
     @property
     def uid(self) -> str:
@@ -38,7 +38,7 @@ class Player:
         :param password: Plaintext password to be hashed
         '''
         ph = PasswordHasher()
-        self.__hashed_password = ph.hash(password)
+        self._hashed_password = ph.hash(password)
 
     def verify_password(self, password:str):
         '''
@@ -48,7 +48,7 @@ class Player:
         '''
         ph = PasswordHasher()
         try:
-            return ph.verify(self.__hashed_password, password)
+            return ph.verify(self._hashed_password, password)
         except VerifyMismatchError:
             return False
 

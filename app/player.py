@@ -7,8 +7,8 @@ class Player:
         :param uid: Unique id of the player
         :param name: name of the player
         '''
-        self.__uid = uid
-        self.__name = name
+        self._uid = uid
+        self._name = name
         self.__hashed_password = None
 
     @property
@@ -16,20 +16,20 @@ class Player:
         '''
         :return: Unique id of the player
         '''
-        return self.__uid
+        return self._uid
 
     @property
     def name(self) -> str:
         '''
         :return: name of the player
         '''
-        return self.__name
+        return self._name
 
     def __str__(self):
         '''
         :return: String representation of the player
         '''
-        return f"id:{self.__uid} ,name:{self.__name}"
+        return f"id:{self._uid} ,name:{self._name}"
 
 
     def add_password(self, password:str):
@@ -54,4 +54,10 @@ class Player:
 
 
 
+def main():
+    player = Player("1", "Sae")
+    print(str(player))
 
+
+if __name__ == "__main__":
+    main()

@@ -33,7 +33,7 @@ class PlayerNode():
         return self._next
 
     @previous.setter
-    def previous(self, previous_node: Player):
+    def previous(self, previous_node):
         '''
         :param previous_node: The PlayerNode to be set as the previous node
         '''
@@ -46,18 +46,45 @@ class PlayerNode():
         '''
         self._next = next_node
 
-# Creating a new variable called key
+    # Creating a new variable called key
     @property
     def key(self):
         '''
         Get the uid of the player
         :return: The id of the player
         '''
-        return self._player.uid
+        return self.player.uid
 
     def __str__(self) -> str:
         '''
         :return: String representation of the player
         '''
-        return f"PlayerNode({self._player}, Previous={self._previous}, Next={self._next})"
+        if self.previous:
+            pre_node = self._previous.key
+        else:
+            pre_node = "None"
+
+        if self.next:
+            nex_node = self._next.key
+        else:
+            nex_node = "None"
+
+        return f"PlayerNode({self.player}, Previous={pre_node}, Next={nex_node})"
+
+def main():
+    player = Player("1", "Sae")
+    player2 = Player("2", "John")
+
+    plnode = PlayerNode(player)
+    plnode2 = PlayerNode(player2)
+
+    plnode.next = plnode2
+    plnode2.previous = plnode
+
+    print(plnode)
+    print(plnode2)
+
+
+if __name__ == "__main__":
+    main()
 

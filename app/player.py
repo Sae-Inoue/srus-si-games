@@ -28,10 +28,19 @@ class Player:
 
     @property
     def score(self) -> int:
+        '''
+        Get the score of the player
+        :return: score of the player
+        '''
         return self._score
 
     @score.setter
     def score(self, new_score):
+        '''
+        Set the score of the player
+        :param new_score:
+        :return:
+        '''
         self._score = new_score
 
     def __str__(self):

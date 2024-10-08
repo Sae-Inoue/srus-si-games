@@ -2,11 +2,15 @@ from player import Player
 from player_bnode import PlayerBNode
 class PlayerBST():
     def __init__(self):
+        '''
+        Initialize the root of player BST
+        '''
         self._root = None
 
     @property
     def root(self):
         '''
+        Set the root of the player BST
         :return: Root of the search
         '''
         return self._root
@@ -14,6 +18,7 @@ class PlayerBST():
     def insert(self, player: Player):
         '''
         Insert PlayerNode to BST by using name as keys
+        :param player: Player to be inserted into the BST
         '''
         new_node = PlayerBNode(player)
         new_node.key = player.name
@@ -40,7 +45,7 @@ class PlayerBST():
     def search(self, name):
         '''
         Search player by name
-        :param name plyer name
+        :param name: plyer name
         :return current: searching node
         '''
         return self.prepare_search(self._root, name)

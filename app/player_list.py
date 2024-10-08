@@ -144,9 +144,9 @@ class PlayerList():
 
 
 def main():
-    player = Player("1", "Sae")
-    player2 = Player("2", "John")
-    player3 = Player("3", "Josh")
+    player = Player("1", "Sae",20)
+    player2 = Player("2", "John",30)
+    player3 = Player("3", "Josh",10)
     plnode = PlayerNode(player)
     plnode2 = PlayerNode(player2)
     plnode3 = PlayerNode(player3)

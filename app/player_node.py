@@ -72,8 +72,8 @@ class PlayerNode():
         return f"PlayerNode({self.player}, Previous={pre_node}, Next={nex_node})"
 
 def main():
-    player = Player("1", "Sae")
-    player2 = Player("2", "John")
+    player = Player("1", "Sae",20)
+    player2 = Player("2", "John",10)
 
     plnode = PlayerNode(player)
     plnode2 = PlayerNode(player2)

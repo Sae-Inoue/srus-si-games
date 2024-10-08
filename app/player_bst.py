@@ -12,6 +12,9 @@ class PlayerBST():
         return self._root
 
     def insert(self, player: Player):
+        '''
+        Insert PlayerNode to BST by using name as keys
+        '''
         new_node = PlayerBNode(player)
         new_node.key = player.name
         new_node.value = player
@@ -34,6 +37,36 @@ class PlayerBST():
                         parent.right = new_node
                         return
 
+    def search(self, name):
+        '''
+        Search player by name
+        :param name plyer name
+        :return current: searching node
+        '''
+        return self.prepare_search(self._root, name)
+
+    def prepare_search(self, current, name):
+        '''
+        Prepare Search method to use search function
+        :param: current: current node
+                name: player name
+        :return: if searching name matches current node player name return it
+                 otherwise return none
+        '''
+        while current.player.name != name:
+            if name < current.player.name:
+                current = current.left
+            elif name > current.player.name:
+                current = current.right
+
+            if current is None:
+                print(f"{name} is not found!")
+                return None
+
+        print(f"{name} is found!!")
+        return current.player
+
+
 def main():
     tree = PlayerBST()
 
@@ -47,6 +80,10 @@ def main():
     tree.insert(player2)
     tree.insert(player3)
     tree.insert(player4)
+
+
+    tree.search("Alice")
+    tree.search("Karen")
 
 
 

@@ -30,5 +30,30 @@ class TestPlayerBST(unittest.TestCase):
         self.assertEqual(self.bst.root.right.player.name, "Tom")
         self.assertEqual(self.bst.root.left.right.player.name, "Karen")
 
+    def test_search_found(self):
+        '''Tests the search method of the PlayerBST class can find the player by name
+        :param self:
+        '''
+        self.bst.insert(self.player)
+        self.bst.insert(self.player2)
+        self.bst.insert(self.player3)
+        self.bst.insert(self.player4)
+
+        found_player = self.bst.search("Sae")
+        self.assertEqual(found_player.name, "Sae")
+
+    def test_search_not_found(self):
+        '''Tests the search method of the PlayerBST class can show not found message when the player is not in the BST
+        :param self:
+        '''
+        self.bst.insert(self.player)
+        self.bst.insert(self.player2)
+        self.bst.insert(self.player3)
+        self.bst.insert(self.player4)
+
+        non_player = self.bst.search("Alice")
+        self.assertIsNone(non_player)
+
+
 if __name__ == "__main__":
     unittest.main()

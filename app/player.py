@@ -10,7 +10,10 @@ class Player:
         self._uid = uid
         self._name = name
         self._hashed_password = None
-        self._score = score
+        if score > 0:
+            self._score = score
+        else:
+            raise ValueError(f"Invalid score for {name}. It must be a positive integer.")
 
     @property
     def uid(self) -> str:
@@ -42,6 +45,7 @@ class Player:
         :return:
         '''
         self._score = new_score
+
 
     def __str__(self):
         '''
@@ -107,21 +111,21 @@ class Player:
         '''
         return self._score < other.score
 
-    def sort_descending(self, scores):
+    def sort_descending(self, players):
         '''
         Sort the players by their score in descending order
         :param scores:
         :return: scores
         '''
-        n = len(scores)
+        n = len(players)
         for i in range(n):
-            sort_list = scores[i]
+            sort_list = players[i]
             j = i-1
-            while j >= 0 and scores[j] < sort_list:
-                scores[j+1] = scores[j]
+            while j >= 0 and players[j].score < sort_list.score:
+                players[j+1] = players[j]
                 j = j-1
-            scores[j+1] = sort_list
-        return scores
+            players[j+1] = sort_list
+        return players
 
 
 def main():
@@ -131,10 +135,16 @@ def main():
     player4 = Player("4", "Levi", 34)
     print(str(player))
 
-    scores = [player.score, player2.score, player3.score, player4.score]
-    print(f'Unsorted list : {scores}')
-    sorted_list = Player.sort_descending(player, scores)
-    print(f'Sorted list : {sorted_list}')
+    players = [player, player2, player3, player4]
+    print(f'Unsorted list : ')
+    for n in players:
+        print(n.name, n.score)
+
+    print("\n")
+    sorted_list = Player.sort_descending(player, players)
+    print(f'Sorted list :')
+    for n in sorted_list:
+        print(n.name, n.score)
 
 
 if __name__ == "__main__":

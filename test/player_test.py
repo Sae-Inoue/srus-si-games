@@ -95,11 +95,11 @@ class TestPlayer(unittest.TestCase):
         self.assertFalse(self.player >= self.player2)
 
     def test_sort_descending(self):
-        scores = [self.player.score, self.player2.score, self.player3.score]
-        sorted_players = Player.sort_descending(Player, scores)
-        self.assertEqual(sorted_players[0], self.player2.score)  # Highest score first
-        self.assertEqual(sorted_players[1], self.player.score)
-        self.assertEqual(sorted_players[2], self.player3.score)
+        players = [self.player, self.player2, self.player3]
+        sorted_players = Player.sort_descending(Player, players)
+        self.assertEqual(sorted_players[0].score, self.player2.score)  # Highest score first
+        self.assertEqual(sorted_players[1].score, self.player.score)
+        self.assertEqual(sorted_players[2].score, self.player3.score)
 
 
 if __name__ == '__main__':

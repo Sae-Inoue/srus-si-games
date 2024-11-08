@@ -92,7 +92,7 @@ class PlayerBST():
         if node is not None:
             self.inorder_helper(node.left, nodes)
             nodes.append(node)
-            print(str(node.player.name))
+            print(str(node.player))
             self.inorder_helper(node.right, nodes)
 
     def balanced_tree(self, nodes, start, end):

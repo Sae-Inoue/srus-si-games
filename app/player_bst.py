@@ -20,6 +20,7 @@ class PlayerBST():
         Insert PlayerNode to BST by using name as keys
         :param player: Player to be inserted into the BST
         '''
+        nodes = []
         new_node = PlayerBNode(player)
         new_node.key = player.name
         new_node.value = player
@@ -27,21 +28,35 @@ class PlayerBST():
         if self._root is None:
             print(f"This is root player: {new_node.key}")
             self._root = new_node
-
+            nodes.append(new_node)
         else:
             current_node = self._root
             while True:
                 parent = current_node
                 if player.name < current_node.player.name:
                     current_node = current_node.left
+
                     if current_node is None:
                         parent.left = new_node
-                        return
+                        nodes.append(new_node)
+                        break
+
+
                 elif player.name > current_node.player.name:
                     current_node = current_node.right
+
                     if current_node is None:
                         parent.right = new_node
-                        return
+                        nodes.append(new_node)
+                        break
+                else:
+                    current_node.player = player
+                    break
+
+        for node in nodes:
+            print(node.player)
+        return nodes
+
 
     def search(self, name):
         '''
@@ -124,19 +139,20 @@ class PlayerBST():
 
 
 
-
 def main():
     tree = PlayerBST()
 
     player = Player("1", "Sae", 20)
     player2 = Player("2", "John", 15)
     player3 = Player("3", "Alice", 49)
-    player4 = Player("4", "Levi", 34)
-    player5 = Player("5", "Josh", 34)
-    player6 = Player("6", "Karen", 34)
-    player7 = Player("7", "Ben ", 34)
+    player4 = Player("4", "Levi", 67)
+    player5 = Player("5", "Josh", 48)
+    player6 = Player("6", "Sae", 8)
+    player7 = Player("7", "Ben ", 99)
+    player8 = Player("8", "Ethan ", 65)
 
 
+    print("This is unbalanced BST:")
     tree.insert(player)
     tree.insert(player2)
     tree.insert(player3)
@@ -144,14 +160,17 @@ def main():
     tree.insert(player5)
     tree.insert(player6)
     tree.insert(player7)
+    tree.insert(player8)
 
+
+
+    print("\n")
+    print("<Search player>")
     tree.search("Alice")
     tree.search("Karen")
 
-    tree.traverse()
-
     print("\n")
-    print("This is balanced tree:")
+    print("This is balanced BST:")
     tree.balance_bst()
 
 
